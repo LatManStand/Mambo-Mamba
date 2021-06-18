@@ -50,6 +50,7 @@ public class BSPGenerator : MonoBehaviour
     public int iniSizeY;
     public int minRoomSizeX;
     public int minRoomSizeY;
+    public int maxDivides;
 
     [SerializeField] private List<Room> rooms;
 
@@ -77,7 +78,7 @@ public class BSPGenerator : MonoBehaviour
 
     private bool CanDivide(Room room)
     {
-        if (room.divides < 4 && room.Height() > 2 * minRoomSizeY + 2 && room.Width() > 2 * minRoomSizeX + 2)
+        if (room.divides < maxDivides && room.Height() > 2 * minRoomSizeY + 2 && room.Width() > 2 * minRoomSizeX + 2)
         {
             return true;
         }
@@ -88,7 +89,15 @@ public class BSPGenerator : MonoBehaviour
     {
         if (CanDivide(room))
         {
-            if (room.divides % 2 == 0)
+            if (room.divides == 0)
+            {
+                int slice = (int)room.MidWidth();
+                Room subroom1 = new Room(room.leftX, room.botY, slice, room.topY, room.divides + 1);
+                Room subroom2 = new Room(slice, room.botY, room.rightX, room.topY, room.divides + 1);
+                Divide(subroom1);
+                Divide(subroom2);
+            }
+            else if (room.divides % 2 == 0)
             {
                 int slice = Random.Range(room.leftX + minRoomSizeX, room.rightX - minRoomSizeX);
                 Room subroom1 = new Room(room.leftX, room.botY, slice, room.topY, room.divides + 1);

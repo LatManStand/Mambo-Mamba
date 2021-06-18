@@ -123,6 +123,89 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &386324235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386324237}
+  - component: {fileID: 386324236}
+  m_Layer: 0
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &386324236
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386324235}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &386324237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386324235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 143.7, y: 15.3, z: 0}
+  m_LocalScale: {x: 15.2991, y: 18.7293, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697556494
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,63 +320,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iniSizeX: 160
   iniSizeY: 90
-  minRoomSizeX: 16
-  minRoomSizeY: 9
+  minRoomSizeX: 8
+  minRoomSizeY: 12
+  maxDivides: 5
   rooms:
-  - name: (0,0) , (33,55)
+  - name: (0,0) , (40,39)
     leftX: 0
     botY: 0
-    rightX: 33
-    topY: 55
-    divides: 3
-  - name: (33,0) , (121,20)
-    leftX: 33
+    rightX: 40
+    topY: 39
+    divides: 5
+  - name: (40,0) , (55,39)
+    leftX: 40
     botY: 0
-    rightX: 121
-    topY: 20
-    divides: 4
-  - name: (33,20) , (121,55)
-    leftX: 33
-    botY: 20
-    rightX: 121
-    topY: 55
-    divides: 4
-  - name: (0,55) , (95,71)
+    rightX: 55
+    topY: 39
+    divides: 5
+  - name: (0,39) , (55,52)
     leftX: 0
-    botY: 55
-    rightX: 95
-    topY: 71
+    botY: 39
+    rightX: 55
+    topY: 52
     divides: 4
-  - name: (0,71) , (95,90)
+  - name: (55,0) , (67,38)
+    leftX: 55
+    botY: 0
+    rightX: 67
+    topY: 38
+    divides: 5
+  - name: (67,0) , (80,38)
+    leftX: 67
+    botY: 0
+    rightX: 80
+    topY: 38
+    divides: 5
+  - name: (55,38) , (80,52)
+    leftX: 55
+    botY: 38
+    rightX: 80
+    topY: 52
+    divides: 4
+  - name: (0,52) , (64,69)
     leftX: 0
-    botY: 71
-    rightX: 95
+    botY: 52
+    rightX: 64
+    topY: 69
+    divides: 4
+  - name: (0,69) , (64,90)
+    leftX: 0
+    botY: 69
+    rightX: 64
     topY: 90
     divides: 4
-  - name: (95,55) , (121,90)
-    leftX: 95
-    botY: 55
-    rightX: 121
+  - name: (64,52) , (80,90)
+    leftX: 64
+    botY: 52
+    rightX: 80
     topY: 90
     divides: 3
-  - name: (121,0) , (160,19)
-    leftX: 121
+  - name: (80,0) , (117,14)
+    leftX: 80
+    botY: 0
+    rightX: 117
+    topY: 14
+    divides: 4
+  - name: (80,14) , (104,73)
+    leftX: 80
+    botY: 14
+    rightX: 104
+    topY: 73
+    divides: 5
+  - name: (104,14) , (117,73)
+    leftX: 104
+    botY: 14
+    rightX: 117
+    topY: 73
+    divides: 5
+  - name: (117,0) , (160,15)
+    leftX: 117
     botY: 0
     rightX: 160
-    topY: 19
+    topY: 15
+    divides: 4
+  - name: (117,15) , (128,73)
+    leftX: 117
+    botY: 15
+    rightX: 128
+    topY: 73
+    divides: 5
+  - name: (128,15) , (160,73)
+    leftX: 128
+    botY: 15
+    rightX: 160
+    topY: 73
+    divides: 5
+  - name: (80,73) , (160,90)
+    leftX: 80
+    botY: 73
+    rightX: 160
+    topY: 90
     divides: 2
-  - name: (121,19) , (142,90)
-    leftX: 121
-    botY: 19
-    rightX: 142
-    topY: 90
-    divides: 3
-  - name: (142,19) , (160,90)
-    leftX: 142
-    botY: 19
-    rightX: 160
-    topY: 90
-    divides: 3
 --- !u!4 &1986580908
 Transform:
   m_ObjectHideFlags: 0
