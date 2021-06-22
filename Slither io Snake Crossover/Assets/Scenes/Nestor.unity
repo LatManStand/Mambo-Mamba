@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 907482107}
   - component: {fileID: 907482110}
   - component: {fileID: 907482109}
+  - component: {fileID: 907482111}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -668,6 +669,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &907482111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907482106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa370e45eb095345b33b323cdd656a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1295238051
 GameObject:
   m_ObjectHideFlags: 0
