@@ -119,4 +119,12 @@ public class BSPGenerator : MonoBehaviour
             rooms.Add(room);
         }
     }
+
+    private Vector2 GetRandomTile()
+    {
+        int room = Random.Range(0, rooms.Count);
+        int x = Random.Range(rooms[room].leftX, rooms[room].rightX);
+        int y = Random.Range(rooms[room].botY, rooms[room].topY);
+        return new Vector2(x, y);
+    }
 }
