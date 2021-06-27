@@ -8,6 +8,7 @@ public class Snake : MonoBehaviour
     private Vector2 _direction = Vector2.right;
 
     private List<Transform> _segments;
+    public Transform segmentPrefab;
 
     private void Start()
     {
@@ -43,6 +44,22 @@ public class Snake : MonoBehaviour
             Mathf.Round(this.transform.position.y) + _direction.y, 
             0.0f);
 
+    }
+
+    private void Grow()
+    {
+        Transform segment = Instantiate(this.segmentPrefab);
+        segment.position = _segments[_segments.Count - 1].position;
+
+        _segments.Add(segment);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Food")
+        {
+            Grow();
+        }
     }
 
 }
