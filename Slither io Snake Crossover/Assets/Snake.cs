@@ -60,11 +60,28 @@ public class Snake : MonoBehaviour
         _segments.Add(segment);
     }
 
+    private void ResetState()
+    {
+        for(int i = 1; i < _segments.Count; i++)
+        {
+            Destroy(_segments[i].gameObject);
+        }
+
+        _segments.Clear();
+        _segments.Add(this.transform);
+
+        this.transform.position = Vector3.zero;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Food")
         {
             Grow();
+        }
+        else if (other.tag == "Obstacle")
+        {
+            ResetState();
         }
     }
 
