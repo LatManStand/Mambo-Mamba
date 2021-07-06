@@ -54,12 +54,19 @@ public class BSPGenerator : MonoBehaviour
 
     [SerializeField] private List<Room> rooms;
 
+    public int doorSize;
+    public int fruitMargin;
+
+    public GameObject VerticalPrefab;
+    public GameObject HorizontalPrefab;
+
     [ContextMenu("Start")]
-    void Start()
+    void OnEnable()
     {
         rooms = new List<Room>();
         Room room = new Room(0, 0, iniSizeX, iniSizeY, 0);
         Divide(room);
+        Spriting();
     }
 
     void OnDrawGizmos()
@@ -120,11 +127,159 @@ public class BSPGenerator : MonoBehaviour
         }
     }
 
-    private Vector2 GetRandomTile()
+    private void Spriting()
+    {
+        foreach (Room rom in rooms)
+        {
+            if (rom.topY < iniSizeY)
+            {
+                Room above = RoomAbove(rom);
+                if (above.rightX != -1)
+                {
+                    Vector2 mid = GetMidPoint(rom, above);
+                    for (int i = rom.leftX; i <= rom.rightX; i++)
+                    {
+                        if (i < mid.x - doorSize || i > mid.x + doorSize)
+                        {
+                            Instantiate(HorizontalPrefab, new Vector3(i, mid.y), Quaternion.identity).name = (rom.name + " Horizontal");
+                        }
+                    }
+                }
+            }
+
+            if (rom.rightX < iniSizeX)
+            {
+                Room right = RoomRight(rom);
+                if (right.rightX != -1)
+                {
+                    Vector2 mid = GetMidPoint(rom, right);
+                    for (int i = rom.botY; i <= rom.topY; i++)
+                    {
+                        if (i < mid.y - doorSize || i > mid.y + doorSize)
+                        {
+                            Instantiate(HorizontalPrefab, new Vector3(mid.x, i), Quaternion.identity).name = (rom.name + " Vertical");
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < iniSizeY; i++)
+        {
+            Instantiate(VerticalPrefab, new Vector3(0, i), Quaternion.identity).name = "Left Wall";
+        }
+
+        for (int i = 0; i < iniSizeY; i++)
+        {
+            Instantiate(VerticalPrefab, new Vector3(iniSizeX, i), Quaternion.identity).name = "Right Wall";
+        }
+
+        for (int i = 0; i < iniSizeX; i++)
+        {
+            Instantiate(HorizontalPrefab, new Vector3(i, 0), Quaternion.identity).name = "Bot Wall";
+        }
+
+        for (int i = 0; i < iniSizeX; i++)
+        {
+            Instantiate(HorizontalPrefab, new Vector3(i, iniSizeY), Quaternion.identity).name = "Top Wall";
+        }
+    }
+
+    private bool IsInside(Vector2 point, Room room)
+    {
+        return point.x < room.rightX && point.x < room.leftX && point.y < room.topY && point.y > room.botY;
+    }
+
+    private Room RoomAbove(Room room)
+    {
+        foreach (Room rom in rooms)
+        {
+            if (rom.botY == room.topY)
+            {
+
+                if ((rom.rightX <= room.rightX && rom.rightX >= room.leftX + minRoomSizeX) || (rom.leftX >= room.leftX && rom.leftX <= room.rightX - minRoomSizeX))
+                {
+                    return rom;
+                }
+                //return rom;
+            }
+        }
+        return new Room(-1, -1, -1, -1, -1);
+    }
+
+    private Room RoomRight(Room room)
+    {
+        foreach (Room rom in rooms)
+        {
+            if (rom.leftX == room.rightX)
+            {
+
+                if ((rom.topY <= room.topY && rom.topY >= room.botY + minRoomSizeY) || (rom.botY >= room.botY && rom.botY <= room.topY - minRoomSizeY))
+                {
+                    return rom;
+                }
+
+                //return rom;
+            }
+        }
+        return new Room(-1, -1, -1, -1, -1);
+
+    }
+
+    private Vector2 GetMidPoint(Room room1, Room room2)
+    {
+        int x = 0, y = 0;
+        int min = 0, max = 0;
+
+        if (room1.topY == room2.botY) // Este
+        {
+            min = Mathf.Max(room1.leftX, room2.leftX);
+            max = Mathf.Min(room1.rightX, room2.rightX);
+            y = room1.topY;
+            x = (min + max) / 2;
+        }
+        else if (room1.botY == room2.topY)
+        {
+            min = Mathf.Max(room1.leftX, room2.leftX);
+            max = Mathf.Min(room1.rightX, room2.rightX);
+            y = room1.botY;
+            x = (min + max) / 2;
+        }
+        else if (room1.leftX == room2.rightX)
+        {
+            min = Mathf.Max(room1.botY, room2.botY);
+            max = Mathf.Min(room1.topY, room2.topY);
+            x = room1.leftX;
+            y = (min + max) / 2;
+        }
+        else  // Y este
+        {
+            min = Mathf.Max(room1.botY, room2.botY);
+            max = Mathf.Min(room1.topY, room2.topY);
+            x = room1.rightX;
+            y = (min + max) / 2;
+        }
+
+
+        return new Vector2(x, y);
+
+
+    }
+
+    public Vector2 GetRandomTile()
     {
         int room = Random.Range(0, rooms.Count);
-        int x = Random.Range(rooms[room].leftX, rooms[room].rightX);
-        int y = Random.Range(rooms[room].botY, rooms[room].topY);
+        int x = Random.Range(rooms[room].leftX + fruitMargin, rooms[room].rightX - fruitMargin);
+        int y = Random.Range(rooms[room].botY + fruitMargin, rooms[room].topY - fruitMargin);
         return new Vector2(x, y);
+    }
+
+    public Vector3 SpawnPoint()
+    {
+        Vector3 aux = new Vector3();
+        aux.x = (rooms[0].leftX + rooms[0].rightX) / 2;
+        aux.y = (rooms[0].botY + rooms[0].topY) / 2;
+        //return new Vector2((rooms[0].leftX + rooms[0].rightX) / 2, (rooms[0].botY + rooms[0].topY) / 2);
+        return aux;
     }
 }

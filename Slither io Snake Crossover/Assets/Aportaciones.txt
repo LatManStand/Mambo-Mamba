@@ -1,0 +1,2 @@
+Raúl Francés Moya: Generación procedural mediante BSP, Flujo de juego
+Néstor Schulten Jiménez: Movimiento del personaje, Sprites
