@@ -51,7 +51,63 @@ public class Snake : MonoBehaviour
              mirando = haciaDondeMiro.izquierda;
          }
         */
+#if UNITY_EDITOR
 
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            if (Input.mousePosition.x < Screen.width / 2)
+            {
+                if (mirando == haciaDondeMiro.derecha)
+                {
+                    _direction = Vector2.up;
+                    mirando = haciaDondeMiro.arriba;
+                }
+                else if (mirando == haciaDondeMiro.arriba)
+                {
+                    _direction = Vector2.left;
+                    mirando = haciaDondeMiro.izquierda;
+                }
+                else if (mirando == haciaDondeMiro.izquierda)
+                {
+                    _direction = Vector2.down;
+                    mirando = haciaDondeMiro.abajo;
+                }
+                else if (mirando == haciaDondeMiro.abajo)
+                {
+                    _direction = Vector2.right;
+                    mirando = haciaDondeMiro.derecha;
+                }
+
+
+            }
+            else if (Input.mousePosition.x >= Screen.width / 2)
+            {
+                if (mirando == haciaDondeMiro.derecha)
+                {
+                    _direction = Vector2.down;
+                    mirando = haciaDondeMiro.abajo;
+                }
+                else if (mirando == haciaDondeMiro.arriba)
+                {
+                    _direction = Vector2.right;
+                    mirando = haciaDondeMiro.derecha;
+                }
+                else if (mirando == haciaDondeMiro.izquierda)
+                {
+                    _direction = Vector2.up;
+                    mirando = haciaDondeMiro.arriba;
+                }
+                else if (mirando == haciaDondeMiro.abajo)
+                {
+                    _direction = Vector2.left;
+                    mirando = haciaDondeMiro.izquierda;
+                }
+
+
+            }
+        }
+#else
         if (Input.touchCount > 0)
         {
 
@@ -108,6 +164,7 @@ public class Snake : MonoBehaviour
 
             }
         }
+#endif
 
     }
 
