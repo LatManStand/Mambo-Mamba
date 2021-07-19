@@ -61,10 +61,6 @@ namespace PlayFab.AuthenticationModels
     public class GetEntityTokenRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -85,13 +81,6 @@ namespace PlayFab.AuthenticationModels
         /// The time the token will expire, if it is an expiring token, in UTC.
         /// </summary>
         public DateTime? TokenExpiration;
-    }
-
-    public enum IdentifiedDeviceType
-    {
-        Unknown,
-        XboxOne,
-        Scarlett
     }
 
     public enum LoginIdentityProvider
@@ -120,15 +109,11 @@ namespace PlayFab.AuthenticationModels
     }
 
     /// <summary>
-    /// Given an entity token, validates that it hasn't expired or been revoked and will return details of the owner.
+    /// Given an entity token, validates that it hasn't exipired or been revoked and will return details of the owner.
     /// </summary>
     [Serializable]
     public class ValidateEntityTokenRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// Client EntityToken
         /// </summary>
@@ -142,10 +127,6 @@ namespace PlayFab.AuthenticationModels
         /// The entity id and type.
         /// </summary>
         public EntityKey Entity;
-        /// <summary>
-        /// The authenticated device for this entity, for the given login
-        /// </summary>
-        public IdentifiedDeviceType? IdentifiedDeviceType;
         /// <summary>
         /// The identity provider for this entity, for the given login
         /// </summary>

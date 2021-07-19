@@ -12,10 +12,6 @@ namespace PlayFab.DataModels
     public class AbortFileUploadsRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -49,10 +45,6 @@ namespace PlayFab.DataModels
     [Serializable]
     public class DeleteFilesRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>
@@ -105,10 +97,6 @@ namespace PlayFab.DataModels
     public class FinalizeFileUploadsRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -116,10 +104,6 @@ namespace PlayFab.DataModels
         /// Names of the files to be finalized. Restricted to a-Z, 0-9, '(', ')', '_', '-' and '.'
         /// </summary>
         public List<string> FileNames;
-        /// <summary>
-        /// The current version of the profile, can be used for concurrency control during updates.
-        /// </summary>
-        public int ProfileVersion;
     }
 
     [Serializable]
@@ -143,7 +127,7 @@ namespace PlayFab.DataModels
     public class GetFileMetadata : PlayFabBaseModel
     {
         /// <summary>
-        /// Checksum value for the file, can be used to check if the file on the server has changed.
+        /// Checksum value for the file
         /// </summary>
         public string Checksum;
         /// <summary>
@@ -173,10 +157,6 @@ namespace PlayFab.DataModels
     public class GetFilesRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -205,10 +185,6 @@ namespace PlayFab.DataModels
     [Serializable]
     public class GetObjectsRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>
@@ -257,10 +233,6 @@ namespace PlayFab.DataModels
     [Serializable]
     public class InitiateFileUploadsRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>
@@ -368,10 +340,6 @@ namespace PlayFab.DataModels
     [Serializable]
     public class SetObjectsRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>

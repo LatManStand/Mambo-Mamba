@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
-  DevAccountEmail: raulfrancesm1997@gmail.com
-  DevAccountToken: jd9x6k3eaxd3u5cpxw1nqn1z96r49e8pneq81zfyger3njn3e4tncqy8xtui499i3keucgo7c6zm45cguc8dzp9udkq98sphpbtwixgdxzkqk7bpgty5sx81pnpop5naeeutfainibbxmzc1uje4xybnzydehkmutkgcftraso4qiicxzp56wdjf91i7jbmke4oh6s17
-  SelectedStudio: My Game Studio
+  DevAccountEmail: sdf_logan_2007@hotmail.com
+  DevAccountToken: rb1q6bzyjoco5i66zmp9zbmiwyr43ebsni6i8c416gu8sxethpoejbxqggxoyrhcg45yyyrppmjmd34cxnawbsd9mm67p7of1j67z8gzt9wkddy96p1zpttiwgxz3pcgpcckh5wksgds4egdgfkmodbm3dhn3eehyrjfxf887pkt1mss7smpufesw51izbqskehku3ac
+  SelectedStudio: ClaseMaster
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: 
+  LocalCloudScriptPath: D:/Proyectos/Master/Playfab/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
   PanelIsShown: 0
-  curMainMenuIdx: 1
+  curMainMenuIdx: 4
   curSubMenuIdx: 0

@@ -13,10 +13,6 @@ namespace PlayFab.GroupsModels
     public class AcceptGroupApplicationRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// Optional. Type of the entity to accept as. If specified, must be the same entity as the claimant or an entity that is a
         /// child of the claimant entity. Defaults to the claimant entity.
         /// </summary>
@@ -36,10 +32,6 @@ namespace PlayFab.GroupsModels
     public class AcceptGroupInvitationRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -57,10 +49,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class AddMembersRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The identifier of the group
         /// </summary>
@@ -90,10 +78,6 @@ namespace PlayFab.GroupsModels
         /// Optional, default true. Automatically accept an outstanding invitation if one exists instead of creating an application
         /// </summary>
         public bool? AutoAcceptOutstandingInvite;
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>
@@ -133,10 +117,6 @@ namespace PlayFab.GroupsModels
     public class BlockEntityRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -154,10 +134,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class ChangeMemberRoleRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The ID of the role that the entities will become a member of. This must be an existing role. Role IDs must be between 1
         /// and 64 characters long.
@@ -185,10 +161,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class CreateGroupRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>
@@ -241,10 +213,6 @@ namespace PlayFab.GroupsModels
     public class CreateGroupRoleRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The identifier of the group
         /// </summary>
         public EntityKey Group;
@@ -286,10 +254,6 @@ namespace PlayFab.GroupsModels
     public class DeleteGroupRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// ID of the group or role to remove
         /// </summary>
         public EntityKey Group;
@@ -301,10 +265,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class DeleteRoleRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The identifier of the group
         /// </summary>
@@ -375,10 +335,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class GetGroupRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The identifier of the group
         /// </summary>
@@ -541,10 +497,6 @@ namespace PlayFab.GroupsModels
         /// </summary>
         public bool? AutoAcceptOutstandingApplication;
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -596,10 +548,6 @@ namespace PlayFab.GroupsModels
     public class IsMemberRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -631,10 +579,6 @@ namespace PlayFab.GroupsModels
     public class ListGroupApplicationsRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The identifier of the group
         /// </summary>
         public EntityKey Group;
@@ -655,10 +599,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class ListGroupBlocksRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The identifier of the group
         /// </summary>
@@ -681,10 +621,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class ListGroupInvitationsRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The identifier of the group
         /// </summary>
@@ -709,10 +645,6 @@ namespace PlayFab.GroupsModels
     public class ListGroupMembersRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// ID of the group to list the members and roles for
         /// </summary>
         public EntityKey Group;
@@ -735,10 +667,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class ListMembershipOpportunitiesRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>
@@ -766,10 +694,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class ListMembershipRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The entity to perform this action on.
         /// </summary>
@@ -802,10 +726,6 @@ namespace PlayFab.GroupsModels
     public class RemoveGroupApplicationRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -825,10 +745,6 @@ namespace PlayFab.GroupsModels
     public class RemoveGroupInvitationRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -845,10 +761,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class RemoveMembersRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// The identifier of the group
         /// </summary>
@@ -870,10 +782,6 @@ namespace PlayFab.GroupsModels
     public class UnblockEntityRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
-        /// <summary>
         /// The entity to perform this action on.
         /// </summary>
         public EntityKey Entity;
@@ -894,10 +802,6 @@ namespace PlayFab.GroupsModels
         /// Optional: the ID of an existing role to set as the new administrator role for the group
         /// </summary>
         public string AdminRoleId;
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// Optional field used for concurrency control. By specifying the previously returned value of ProfileVersion from the
         /// GetGroup API, you can ensure that the group data update will only be performed if the group has not been updated by any
@@ -941,10 +845,6 @@ namespace PlayFab.GroupsModels
     [Serializable]
     public class UpdateGroupRoleRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
         /// <summary>
         /// Optional field used for concurrency control. By specifying the previously returned value of ProfileVersion from the
         /// GetGroup API, you can ensure that the group data update will only be performed if the group has not been updated by any

@@ -8,10 +8,6 @@ namespace PlayFab.LocalizationModels
     [Serializable]
     public class GetLanguageListRequest : PlayFabRequestCommon
     {
-        /// <summary>
-        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-        /// </summary>
-        public Dictionary<string,string> CustomTags;
     }
 
     [Serializable]
