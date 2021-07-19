@@ -137,7 +137,7 @@ public class BSPGenerator : MonoBehaviour
                 if (above.rightX != -1)
                 {
                     Vector2 mid = GetMidPoint(rom, above);
-                    for (int i = rom.leftX; i <= rom.rightX; i++)
+                    for (int i = rom.leftX + 1; i <= rom.rightX; i++)
                     {
                         if (i < mid.x - doorSize || i > mid.x + doorSize)
                         {
@@ -153,11 +153,11 @@ public class BSPGenerator : MonoBehaviour
                 if (right.rightX != -1)
                 {
                     Vector2 mid = GetMidPoint(rom, right);
-                    for (int i = rom.botY; i <= rom.topY; i++)
+                    for (int i = rom.botY + 1; i < rom.topY; i++)
                     {
                         if (i < mid.y - doorSize || i > mid.y + doorSize)
                         {
-                            Instantiate(HorizontalPrefab, new Vector3(mid.x, i), Quaternion.identity).name = (rom.name + " Vertical");
+                            Instantiate(VerticalPrefab, new Vector3(mid.x, i), Quaternion.identity).name = (rom.name + " Vertical");
                         }
                     }
                 }

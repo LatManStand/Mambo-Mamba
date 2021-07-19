@@ -1609,8 +1609,8 @@ MonoBehaviour:
     topY: 90
     divides: 5
   doorSize: 5
-  fruitMargin: 5
-  VerticalPrefab: {fileID: 3128191940194920829, guid: e6b117309bc04d448acc47a4a757a40f,
+  fruitMargin: 0
+  VerticalPrefab: {fileID: 3128191940194920829, guid: e926696e977cf5a42a3aa70b0cf0340b,
     type: 3}
   HorizontalPrefab: {fileID: 3128191940194920829, guid: e6b117309bc04d448acc47a4a757a40f,
     type: 3}
