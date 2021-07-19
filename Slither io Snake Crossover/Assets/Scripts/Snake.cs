@@ -11,6 +11,16 @@ public class Snake : MonoBehaviour
     public Transform segmentPrefab;
 
     public int initialSize = 3;
+    public GameObject effect;
+
+    private enum haciaDondeMiro
+    {
+        arriba, abajo, izquierda, derecha
+    }
+
+    private haciaDondeMiro mirando;
+
+
 
     private void Start()
     {
@@ -19,22 +29,86 @@ public class Snake : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        /* if (Input.GetKeyDown(KeyCode.W))
+         {
+             _direction = Vector2.up;
+             mirando = haciaDondeMiro.arriba;
+         }
+         else if (Input.GetKeyDown(KeyCode.S))
+         {
+             _direction = Vector2.down;
+             mirando = haciaDondeMiro.abajo;
+
+         }
+         else if (Input.GetKeyDown(KeyCode.D))
+         {
+             _direction = Vector2.right;
+             mirando = haciaDondeMiro.derecha;
+         }
+         else if (Input.GetKeyDown(KeyCode.A))
+         {
+             _direction = Vector2.left;
+             mirando = haciaDondeMiro.izquierda;
+         }
+        */
+
+        if (Input.touchCount > 0)
         {
-            _direction = Vector2.up;
+
+
+
+            if (Input.GetTouch(0).position.x < Screen.width / 2)
+            {
+                if (mirando == haciaDondeMiro.derecha)
+                {
+                    _direction = Vector2.up;
+                    mirando = haciaDondeMiro.arriba;
+                }
+                else if (mirando == haciaDondeMiro.arriba)
+                {
+                    _direction = Vector2.left;
+                    mirando = haciaDondeMiro.izquierda;
+                }
+                else if (mirando == haciaDondeMiro.izquierda)
+                {
+                    _direction = Vector2.down;
+                    mirando = haciaDondeMiro.abajo;
+                }
+                else if (mirando == haciaDondeMiro.abajo)
+                {
+                    _direction = Vector2.right;
+                    mirando = haciaDondeMiro.derecha;
+                }
+
+
+            }
+            else if (Input.GetTouch(0).position.x >= Screen.width / 2)
+            {
+                if (mirando == haciaDondeMiro.derecha)
+                {
+                    _direction = Vector2.down;
+                    mirando = haciaDondeMiro.abajo;
+                }
+                else if (mirando == haciaDondeMiro.arriba)
+                {
+                    _direction = Vector2.right;
+                    mirando = haciaDondeMiro.derecha;
+                }
+                else if (mirando == haciaDondeMiro.izquierda)
+                {
+                    _direction = Vector2.up;
+                    mirando = haciaDondeMiro.arriba;
+                }
+                else if (mirando == haciaDondeMiro.abajo)
+                {
+                    _direction = Vector2.left;
+                    mirando = haciaDondeMiro.izquierda;
+                }
+
+
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            _direction = Vector2.down;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            _direction = Vector2.right;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            _direction = Vector2.left;
-        }
+
     }
 
     private void FixedUpdate()
@@ -84,6 +158,7 @@ public class Snake : MonoBehaviour
         {
             Grow();
             GameManager.instance.GenerateFruit();
+            Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
         else if (other.tag == "Obstacle" && Time.timeScale > 0.1f)
@@ -92,5 +167,7 @@ public class Snake : MonoBehaviour
             //ResetState();
         }
     }
+
+
 
 }
