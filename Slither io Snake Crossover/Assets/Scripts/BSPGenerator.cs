@@ -60,6 +60,8 @@ public class BSPGenerator : MonoBehaviour
     public GameObject VerticalPrefab;
     public GameObject HorizontalPrefab;
 
+    public GameObject WallParent;
+
     [ContextMenu("Start")]
     void OnEnable()
     {
@@ -141,7 +143,9 @@ public class BSPGenerator : MonoBehaviour
                     {
                         if (i < mid.x - doorSize || i > mid.x + doorSize)
                         {
-                            Instantiate(HorizontalPrefab, new Vector3(i, mid.y), Quaternion.identity).name = (rom.name + " Horizontal");
+                            GameObject aux = Instantiate(HorizontalPrefab, new Vector3(i, mid.y), Quaternion.identity);
+                            aux.name = (rom.name + " Horizontal");
+                            aux.transform.SetParent(WallParent.transform);
                         }
                     }
                 }
@@ -157,7 +161,9 @@ public class BSPGenerator : MonoBehaviour
                     {
                         if (i < mid.y - doorSize || i > mid.y + doorSize)
                         {
-                            Instantiate(VerticalPrefab, new Vector3(mid.x, i), Quaternion.identity).name = (rom.name + " Vertical");
+                            GameObject aux = Instantiate(VerticalPrefab, new Vector3(i, mid.y), Quaternion.identity);
+                            aux.name = (rom.name + " Vertical");
+                            aux.transform.SetParent(WallParent.transform);
                         }
                     }
                 }
