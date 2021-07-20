@@ -161,7 +161,7 @@ public class BSPGenerator : MonoBehaviour
                     {
                         if (i < mid.y - doorSize || i > mid.y + doorSize)
                         {
-                            GameObject aux = Instantiate(VerticalPrefab, new Vector3(i, mid.y), Quaternion.identity);
+                            GameObject aux = Instantiate(VerticalPrefab, new Vector3(mid.x, i), Quaternion.identity);
                             aux.name = (rom.name + " Vertical");
                             aux.transform.SetParent(WallParent.transform);
                         }
