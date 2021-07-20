@@ -172,22 +172,24 @@ public class BSPGenerator : MonoBehaviour
 
         for (int i = 0; i < iniSizeY; i++)
         {
-            Instantiate(VerticalPrefab, new Vector3(0, i), Quaternion.identity).name = "Left Wall";
-        }
+            GameObject aux = Instantiate(VerticalPrefab, new Vector3(0, i), Quaternion.identity);
+            aux.name = "Left Wall";
+            aux.transform.SetParent(WallParent.transform);
 
-        for (int i = 0; i < iniSizeY; i++)
-        {
-            Instantiate(VerticalPrefab, new Vector3(iniSizeX, i), Quaternion.identity).name = "Right Wall";
-        }
-
-        for (int i = 0; i < iniSizeX; i++)
-        {
-            Instantiate(HorizontalPrefab, new Vector3(i, 0), Quaternion.identity).name = "Bot Wall";
+            GameObject aux2 = Instantiate(VerticalPrefab, new Vector3(iniSizeX, i), Quaternion.identity);
+            aux2.name = "Right Wall";
+            aux2.transform.SetParent(WallParent.transform);
         }
 
         for (int i = 0; i < iniSizeX; i++)
         {
-            Instantiate(HorizontalPrefab, new Vector3(i, iniSizeY), Quaternion.identity).name = "Top Wall";
+            GameObject aux = Instantiate(HorizontalPrefab, new Vector3(i, 0), Quaternion.identity);
+            aux.name = "Bot Wall";
+            aux.transform.SetParent(WallParent.transform);
+
+            GameObject aux2 = Instantiate(HorizontalPrefab, new Vector3(i, iniSizeY), Quaternion.identity);
+            aux2.name = "Top Wall";
+            aux2.transform.SetParent(WallParent.transform);
         }
     }
 
