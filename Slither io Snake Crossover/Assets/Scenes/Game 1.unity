@@ -1377,7 +1377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054880669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.54189, y: 47.184208, z: -149.22714}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2244,6 +2244,7 @@ MonoBehaviour:
     type: 3}
   HorizontalPrefab: {fileID: 3128191940194920829, guid: e6b117309bc04d448acc47a4a757a40f,
     type: 3}
+  WallParent: {fileID: 1054880669}
 --- !u!4 &1986580908
 Transform:
   m_ObjectHideFlags: 0
