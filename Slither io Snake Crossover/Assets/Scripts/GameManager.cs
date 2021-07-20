@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     public void ReloadScene()
     {
         endPanel.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
