@@ -150,6 +150,7 @@ MonoBehaviour:
     type: 3}
   initialSize: 3
   effect: {fileID: 150122316067830636, guid: adb47295e626f8e44817dcd9e8fc260c, type: 3}
+  deathFX: {fileID: 1941615297575793248, guid: c148b35bfd9329741abb611ab532c213, type: 3}
 --- !u!96 &5876001349760082684
 TrailRenderer:
   serializedVersion: 2

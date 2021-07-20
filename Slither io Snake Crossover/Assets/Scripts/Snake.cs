@@ -12,6 +12,7 @@ public class Snake : MonoBehaviour
 
     public int initialSize = 3;
     public GameObject effect;
+    public GameObject deathFX;
 
     private enum haciaDondeMiro
     {
@@ -221,6 +222,7 @@ public class Snake : MonoBehaviour
         else if (other.tag == "Obstacle" && Time.timeScale > 0.1f)
         {
             GameManager.instance.EndMatch();
+            Instantiate(deathFX, transform.position, Quaternion.identity);
             //ResetState();
         }
     }
