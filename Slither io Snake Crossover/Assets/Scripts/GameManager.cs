@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEneable()
     {
         Time.timeScale = 0.0f;
         //startPanel.SetActive(true);

@@ -207,6 +207,9 @@ public class Snake : MonoBehaviour
             _segments.Add(Instantiate(this.segmentPrefab));
         }
 
+        _direction = Vector2.right;
+        mirando = haciaDondeMiro.derecha;
+
         //this.transform.position = Vector3.zero;
     }
 
