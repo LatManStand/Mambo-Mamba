@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
-  DevAccountEmail: 
-  DevAccountToken: 
+  DevAccountEmail: raulfrancesm1997@gmail.com
+  DevAccountToken: sau6iy4nk34khbn4ym63exjthnr4qnx3podr4yaentahegahcmqu7catqisqd9gpczsrn94zinqiz1gqepnxxu3o6uryuij1skqb7qxo37gf6jrcqfgeipda788uznd7gmfsb6may8rnr4btdza8qjbtqmfsrxwp7p5jkihstpef853x8xhg3p6o9qsuiexctg9w7twa
   SelectedStudio: 
-  SdkPath: 
+  SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: 
+  LocalCloudScriptPath: C:/Users/Raul/Mambo Mamba/Mambo-Mamba/Slither io Snake Crossover/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
   PanelIsShown: 0
-  curMainMenuIdx: 0
+  curMainMenuIdx: 1
   curSubMenuIdx: 0

@@ -109,7 +109,7 @@ public class Snake : MonoBehaviour
             }
         }
 #else
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
 
 
@@ -194,6 +194,9 @@ public class Snake : MonoBehaviour
 
     private void ResetState()
     {
+        _direction = Vector2.right;
+        mirando = haciaDondeMiro.derecha;
+
         for (int i = 1; i < _segments.Count; i++)
         {
             Destroy(_segments[i].gameObject);
@@ -207,8 +210,6 @@ public class Snake : MonoBehaviour
             _segments.Add(Instantiate(this.segmentPrefab));
         }
 
-        _direction = Vector2.right;
-        mirando = haciaDondeMiro.derecha;
 
         //this.transform.position = Vector3.zero;
     }

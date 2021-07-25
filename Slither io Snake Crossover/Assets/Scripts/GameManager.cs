@@ -1,3 +1,5 @@
+using PlayFab;
+using PlayFab.ClientModels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +17,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject startPanel;
     public GameObject endPanel;
+    public GameObject connectingPanel;
+    public GameObject connectionFailedPanel;
     public Text endPoints;
+    public Text maxPointsText;
 
     private BSPGenerator bsp;
     private int points;
+    public int maxPoints;
+
+    private static bool isLogged = false;
 
     private void Awake()
     {
@@ -26,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        else
+        else if (instance != this)
         {
             Destroy(this);
         }
@@ -34,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        ServerLogin();
         Time.timeScale = 0.0f;
-        //startPanel.SetActive(true);
         bsp = FindObjectOfType<BSPGenerator>();
         snake = Instantiate(snakePrefab, bsp.SpawnPoint(), Quaternion.identity);
         //snake.transform.position = bsp.SpawnPoint();
@@ -54,21 +62,63 @@ public class GameManager : MonoBehaviour
 
     public void StartMatch()
     {
-        Time.timeScale = 1.0f;
-        startPanel.SetActive(false);
+        if (isLogged)
+        {
+            Time.timeScale = 1.0f;
+            startPanel.SetActive(false);
+        }
     }
 
     public void EndMatch()
     {
+        PlayFabManager.instance.SubmitStatistics(points);
         Time.timeScale = 0.0f;
         endPoints.text = punctuation.text;
         endPanel.SetActive(true);
+        maxPointsText.text = "Highscore: " + maxPoints;
     }
 
     public void ReloadScene()
     {
         endPanel.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void ServerLogin()
+    {
+        if (!isLogged)
+        {
+            connectingPanel.SetActive(true);
+            PlayFabManager.instance.AndroidLogin(OnAndroidLoginSuccess, OnAndroidLoginFailed);
+        }
+    }
+
+    private void OnAndroidLoginSuccess(LoginResult loginResult)
+    {
+        connectingPanel.SetActive(false);
+        Debug.Log("Android Login: " + loginResult.PlayFabId);
+        isLogged = true;
+        PlayFabManager.instance.GetStatistics();
+    }
+    private void OnAndroidLoginFailed(PlayFabError error)
+    {
+        Debug.Log("Android Login: " + error.GenerateErrorReport());
+        PlayFabManager.instance.Login(OnLoginSuccess, OnLoginFailed);
+    }
+
+    private void OnLoginSuccess(LoginResult loginResult)
+    {
+        connectingPanel.SetActive(false);
+        Debug.Log("Login: " + loginResult.PlayFabId);
+        isLogged = true;
+        PlayFabManager.instance.GetStatistics();
+    }
+    private void OnLoginFailed(PlayFabError error)
+    {
+        connectionFailedPanel.SetActive(true);
+        connectingPanel.SetActive(false);
+        Debug.Log("Login: " + error.GenerateErrorReport());
+        isLogged = false;
     }
 
 }
