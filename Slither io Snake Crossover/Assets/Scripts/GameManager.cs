@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public Text endPoints;
     public Text maxPointsText;
 
-    private BSPGenerator bsp;
+    public BSPGenerator bsp;
     private int points;
     public int maxPoints;
 
@@ -44,13 +44,24 @@ public class GameManager : MonoBehaviour
     {
         ServerLogin();
         Time.timeScale = 0.0f;
-        bsp = FindObjectOfType<BSPGenerator>();
-        snake = Instantiate(snakePrefab, bsp.SpawnPoint(), Quaternion.identity);
         //snake.transform.position = bsp.SpawnPoint();
         //snake.transform.SetAsFirstSibling();
+    }
+
+    private void Start()
+    {
         points = -2;
         GenerateFruit();
         GenerateFruit();
+        snake = Instantiate(snakePrefab, bsp.SpawnPoint(), Quaternion.identity);
+        if (bsp.FirstRoomIsWider())
+        {
+            snake.GetComponent<Snake>().LookRight();
+        }
+        else
+        {
+            snake.GetComponent<Snake>().LookUpwards();
+        }
     }
 
     public void GenerateFruit()
@@ -66,6 +77,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             startPanel.SetActive(false);
+            PlayFabManager.instance.GetStatistics();
         }
     }
 

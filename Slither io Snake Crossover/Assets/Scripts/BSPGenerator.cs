@@ -62,8 +62,9 @@ public class BSPGenerator : MonoBehaviour
 
     public GameObject WallParent;
 
+
     [ContextMenu("Start")]
-    void OnEnable()
+    private void Awake()
     {
         rooms = new List<Room>();
         Room room = new Room(0, 0, iniSizeX, iniSizeY, 0);
@@ -289,5 +290,10 @@ public class BSPGenerator : MonoBehaviour
         aux.y = (rooms[0].botY + rooms[0].topY) / 2;
         //return new Vector2((rooms[0].leftX + rooms[0].rightX) / 2, (rooms[0].botY + rooms[0].topY) / 2);
         return aux;
+    }
+
+    public bool FirstRoomIsWider()
+    {
+        return rooms[0].Width() > rooms[0].Height();
     }
 }

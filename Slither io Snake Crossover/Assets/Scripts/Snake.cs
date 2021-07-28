@@ -19,7 +19,7 @@ public class Snake : MonoBehaviour
         arriba, abajo, izquierda, derecha
     }
 
-    private haciaDondeMiro mirando;
+    private haciaDondeMiro mirando = haciaDondeMiro.derecha;
 
 
 
@@ -54,7 +54,7 @@ public class Snake : MonoBehaviour
         */
 #if UNITY_EDITOR
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale > 0.1f)
         {
 
             if (Input.mousePosition.x < Screen.width / 2)
@@ -109,7 +109,7 @@ public class Snake : MonoBehaviour
             }
         }
 #else
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && Time.timeScale > 0.1f)
         {
 
 
@@ -194,8 +194,6 @@ public class Snake : MonoBehaviour
 
     private void ResetState()
     {
-        _direction = Vector2.right;
-        mirando = haciaDondeMiro.derecha;
 
         for (int i = 1; i < _segments.Count; i++)
         {
@@ -209,7 +207,6 @@ public class Snake : MonoBehaviour
         {
             _segments.Add(Instantiate(this.segmentPrefab));
         }
-
 
         //this.transform.position = Vector3.zero;
     }
@@ -229,6 +226,18 @@ public class Snake : MonoBehaviour
             Instantiate(deathFX, transform.position, Quaternion.identity);
             //ResetState();
         }
+    }
+
+    public void LookUpwards()
+    {
+        _direction = Vector2.up;
+        mirando = haciaDondeMiro.arriba;
+    }
+
+    public void LookRight()
+    {
+        _direction = Vector2.right;
+        mirando = haciaDondeMiro.derecha;
     }
 
 
