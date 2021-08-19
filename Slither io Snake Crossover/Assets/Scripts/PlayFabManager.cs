@@ -24,8 +24,12 @@ public class PlayFabManager : MonoBehaviour
             Destroy(this);
         }
     }
-
-    public static bool GetDeviceId(bool silent = false) // silent suppresses the error
+    /// <summary>
+    /// Get an id depending on the device, specific for Android or 
+    /// </summary>
+    /// <param name="silent">Suppresses the error</param>
+    /// <returns></returns>
+    public static bool GetDeviceId(bool silent = false)
     {
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -46,7 +50,11 @@ public class PlayFabManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Try to login with Android device ID
+    /// </summary>
+    /// <param name="onSuccess">Method to call on success</param>
+    /// <param name="onFail">M;ethod to call on fail</param>
     public void AndroidLogin(Action<LoginResult> onSuccess, Action<PlayFabError> onFail)
     {
         LoginWithAndroidDeviceIDRequest request = new LoginWithAndroidDeviceIDRequest
@@ -57,6 +65,11 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.LoginWithAndroidDeviceID(request, onSuccess, onFail);
     }
 
+    /// <summary>
+    /// Login with generic device ID
+    /// </summary>
+    /// <param name="onSuccess">Method to call on success</param>
+    /// <param name="onFail">Method to call on fail</param>
     public void Login(Action<LoginResult> onSuccess, Action<PlayFabError> onFail)
     {
         LoginWithCustomIDRequest request = new LoginWithCustomIDRequest
@@ -68,6 +81,10 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.LoginWithCustomID(request, onSuccess, onFail);
     }
 
+    /// <summary>
+    /// Upload own statistics to Playfab
+    /// </summary>
+    /// <param name="value">Score to submit</param>
     public void SubmitStatistics(int value)
     {
 
@@ -99,6 +116,9 @@ public class PlayFabManager : MonoBehaviour
         Debug.LogError(error.GenerateErrorReport());
     }
 
+    /// <summary>
+    /// Download Playfab own statistics
+    /// </summary>
     public void GetStatistics()
     {
         PlayFabClientAPI.GetPlayerStatistics(new GetPlayerStatisticsRequest(),
@@ -107,6 +127,10 @@ public class PlayFabManager : MonoBehaviour
             );
     }
 
+    /// <summary>
+    /// Update GameManager highscore
+    /// </summary>
+    /// <param name="result">Player Statiscitcs Result</param>
     private void OnGetStatistics(GetPlayerStatisticsResult result)
     {
         foreach (var eachStat in result.Statistics)

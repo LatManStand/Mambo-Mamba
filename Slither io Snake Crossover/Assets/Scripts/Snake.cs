@@ -30,6 +30,7 @@ public class Snake : MonoBehaviour
 
     private void Update()
     {
+        // Este movimiento comentado es para debugear desde el editor
         /* if (Input.GetKeyDown(KeyCode.W))
          {
              _direction = Vector2.up;
@@ -52,11 +53,13 @@ public class Snake : MonoBehaviour
              mirando = haciaDondeMiro.izquierda;
          }
         */
-#if UNITY_EDITOR
 
+
+#if UNITY_EDITOR
+        // Movimiento desde el editor simulando los controles táctiles de móvil
         if (Input.GetMouseButtonDown(0) && Time.timeScale > 0.1f)
         {
-
+            // Click en la parte izquierda de la pantalla
             if (Input.mousePosition.x < Screen.width / 2)
             {
                 if (mirando == haciaDondeMiro.derecha)
@@ -82,6 +85,7 @@ public class Snake : MonoBehaviour
 
 
             }
+            // Click en la parte derecha de la pantalla
             else if (Input.mousePosition.x >= Screen.width / 2)
             {
                 if (mirando == haciaDondeMiro.derecha)
@@ -109,11 +113,13 @@ public class Snake : MonoBehaviour
             }
         }
 #else
+        //Controles táctiles en el móvil
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && Time.timeScale > 0.1f)
         {
 
 
-
+        
+            // Toque en la parte izquierda de la pantalla
             if (Input.GetTouch(0).position.x < Screen.width / 2)
             {
                 if (mirando == haciaDondeMiro.derecha)
@@ -139,6 +145,8 @@ public class Snake : MonoBehaviour
 
 
             }
+        
+            // Toque en la parte derecha de la pantalla
             else if (Input.GetTouch(0).position.x >= Screen.width / 2)
             {
                 if (mirando == haciaDondeMiro.derecha)
@@ -171,7 +179,7 @@ public class Snake : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        // Movimiento
         for (int i = _segments.Count - 1; i > 0; i--)
         {
             _segments[i].position = _segments[i - 1].position;
@@ -184,6 +192,9 @@ public class Snake : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// La serpiente crece
+    /// </summary>
     private void Grow()
     {
         Transform segment = Instantiate(this.segmentPrefab);
@@ -192,9 +203,11 @@ public class Snake : MonoBehaviour
         _segments.Add(segment);
     }
 
+    /// <summary>
+    /// Se resetea la serpiente
+    /// </summary>
     private void ResetState()
     {
-
         for (int i = 1; i < _segments.Count; i++)
         {
             Destroy(_segments[i].gameObject);
@@ -207,12 +220,11 @@ public class Snake : MonoBehaviour
         {
             _segments.Add(Instantiate(this.segmentPrefab));
         }
-
-        //this.transform.position = Vector3.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Recoger una maraca/fruta
         if (other.tag == "Food")
         {
             Grow();
@@ -220,6 +232,7 @@ public class Snake : MonoBehaviour
             Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
+        // Chocarse contra un obstaculo
         else if (other.tag == "Obstacle" && Time.timeScale > 0.1f)
         {
             GameManager.instance.EndMatch();
@@ -228,12 +241,18 @@ public class Snake : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Hacer que la serpiente mire hacia arriba
+    /// </summary>
     public void LookUpwards()
     {
         _direction = Vector2.up;
         mirando = haciaDondeMiro.arriba;
     }
 
+    /// <summary>
+    /// Hacer que la serpiente mire hacia la derecha
+    /// </summary>
     public void LookRight()
     {
         _direction = Vector2.right;

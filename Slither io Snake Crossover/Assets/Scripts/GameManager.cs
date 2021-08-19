@@ -44,8 +44,6 @@ public class GameManager : MonoBehaviour
     {
         ServerLogin();
         Time.timeScale = 0.0f;
-        //snake.transform.position = bsp.SpawnPoint();
-        //snake.transform.SetAsFirstSibling();
     }
 
     private void Start()
@@ -64,6 +62,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Generate a new fruit
+    /// </summary>
     public void GenerateFruit()
     {
         Instantiate(fruit, bsp.GetRandomTile(), Quaternion.identity);
@@ -71,6 +72,9 @@ public class GameManager : MonoBehaviour
         punctuation.text = "Points: " + points.ToString();
     }
 
+    /// <summary>
+    /// Hide start panels and start snake movement
+    /// </summary>
     public void StartMatch()
     {
         if (isLogged)
@@ -81,6 +85,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Show end panels and stop snake movement
+    /// </summary>
     public void EndMatch()
     {
         PlayFabManager.instance.SubmitStatistics(points);
@@ -90,12 +97,18 @@ public class GameManager : MonoBehaviour
         maxPointsText.text = "Highscore: " + maxPoints;
     }
 
+    /// <summary>
+    /// Reset the game
+    /// </summary>
     public void ReloadScene()
     {
         endPanel.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    /// <summary>
+    /// Login to Playfab
+    /// </summary>
     private void ServerLogin()
     {
         if (!isLogged)
@@ -105,6 +118,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Login with Android successfull
+    /// </summary>
+    /// <param name="loginResult">Playfab message</param>
     private void OnAndroidLoginSuccess(LoginResult loginResult)
     {
         connectingPanel.SetActive(false);
@@ -112,12 +129,21 @@ public class GameManager : MonoBehaviour
         isLogged = true;
         PlayFabManager.instance.GetStatistics();
     }
+
+    /// <summary>
+    /// Login with Android failed
+    /// </summary>
+    /// <param name="error">Playfab error</param>
     private void OnAndroidLoginFailed(PlayFabError error)
     {
         Debug.Log("Android Login: " + error.GenerateErrorReport());
         PlayFabManager.instance.Login(OnLoginSuccess, OnLoginFailed);
     }
 
+    /// <summary>
+    /// Generic login successfull
+    /// </summary>
+    /// <param name="loginResult">Playfab message</param>
     private void OnLoginSuccess(LoginResult loginResult)
     {
         connectingPanel.SetActive(false);
@@ -125,6 +151,11 @@ public class GameManager : MonoBehaviour
         isLogged = true;
         PlayFabManager.instance.GetStatistics();
     }
+
+    /// <summary>
+    /// Generic login failed
+    /// </summary>
+    /// <param name="error">Playfab error</param>
     private void OnLoginFailed(PlayFabError error)
     {
         connectionFailedPanel.SetActive(true);

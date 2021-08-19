@@ -1,2 +1,2 @@
-Raúl Francés Moya: Generación procedural mediante BSP, Flujo de juego
-Néstor Schulten Jiménez: Movimiento del personaje, Sprites
+Raúl Francés Moya: Generación procedural mediante BSP, Flujo de juego, Playfab
+Néstor Schulten Jiménez: Movimiento del personaje, Sprites, Sonidos, FX
